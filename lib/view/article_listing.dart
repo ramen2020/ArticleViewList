@@ -2,6 +2,7 @@ import 'package:qiita_client/themes/themes.dart';
 import 'package:qiita_client/bloc/article_bloc.dart';
 import 'package:qiita_client/bloc/article_state.dart';
 import 'package:qiita_client/models/article.dart';
+import 'package:qiita_client/view/ArticleDetailPage.Dart';
 import 'package:qiita_client/widgets/message.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,14 +36,21 @@ class ArticleListing extends StatelessWidget {
         itemBuilder: (BuildContext context, index) {
           Article article = articles[index];
           return ListTile(
-            leading: Image.network(
-              article.user.profileImageUrl,
-              width: 70.0,
-              height: 70.0,
-            ),
-            title: Text(article.title, style: titleStyle),
-            subtitle: Text(article.user.id, style: subTitleStyle),
-          );
+              leading: Image.network(
+                article.user.profileImageUrl,
+                width: 70.0,
+                height: 70.0,
+              ),
+              title: Text(article.title, style: titleStyle),
+              subtitle: Text(article.user.id, style: subTitleStyle),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          ArticleDetailPage(article: article)),
+                );
+              });
         },
         separatorBuilder: (BuildContext context, index) {
           return Divider(
