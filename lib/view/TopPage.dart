@@ -28,11 +28,6 @@ class TopPageState extends State<TopPage> {
   }
 
   @override
-  void didUpdateWidget(TopPage oldWidget) {
-    super.didUpdateWidget(oldWidget);
-  }
-
-  @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (BuildContext context) => _articleBloc,
