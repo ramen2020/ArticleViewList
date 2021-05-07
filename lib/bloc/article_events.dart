@@ -6,6 +6,11 @@ abstract class ArticleEvent {}
 class ArticleTagSelectedEvent extends ArticleEvent {
   final ArticleTagModel articleTagModel;
 
-  ArticleTagSelectedEvent({@required this.articleTagModel})
-      : assert(articleTagModel != null);
+  ArticleTagSelectedEvent({@required this.articleTagModel});
+}
+
+class SearchTextEvent extends ArticleEvent {
+ final String searchWord;
+
+ SearchTextEvent({this.searchWord});
 }

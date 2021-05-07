@@ -7,13 +7,27 @@ import 'package:qiita_client/models/article.dart';
 class ArticleBloc extends Bloc<ArticleEvent, ArticleState> {
   final ArticleRepository articleRepository;
 
-  ArticleBloc({this.articleRepository})
-      : assert(articleRepository != null),
-        super(null);
+  ArticleBloc({this.articleRepository}) : super(null);
 
   @override
   Stream<ArticleState> mapEventToState(ArticleEvent event) async* {
     print(event);
+    if (event is SearchTextEvent) {
+      yield ArticleFetchingState();
+      try {
+        final List<Article> articles = await articleRepository
+            .fetchArticlesByTitle(event.searchWord);
+            print(event.searchWord);
+        if (articles.length == 0) {
+          yield ArticleEmptyState();
+        } else {
+          yield ArticleFetchedState(articles: articles);
+        }
+      } catch (_) {
+        yield ArticleErrorState();
+      }
+    }
+
     if (event is ArticleTagSelectedEvent) {
       yield ArticleFetchingState();
       try {

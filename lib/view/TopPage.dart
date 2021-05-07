@@ -3,8 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qiita_client/bloc/article_bloc.dart';
 import 'package:qiita_client/services/repository.dart';
 import 'package:qiita_client/themes/themes.dart';
+import 'package:qiita_client/widgets/article_search_word_bar.dart';
 import 'package:qiita_client/widgets/article_tag_bar.dart';
-import 'package:qiita_client/view/article_listing.dart';
+import 'package:qiita_client/widgets/article_list.dart';
 
 class TopPage extends StatefulWidget {
   final ArticleRepository articleRepository;
@@ -43,6 +44,8 @@ class TopPageState extends State<TopPage> {
           body: Column(
             children: <Widget>[
               ArticleTagBar(),
+              SizedBox(height: 10.0),
+              ArticleSearchWordBar(),
               SizedBox(height: 10.0),
               ArticleListing(),
             ],

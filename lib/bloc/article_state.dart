@@ -13,7 +13,7 @@ class ArticleFetchingState extends ArticleState {}
 class ArticleFetchedState extends ArticleState {
   final List<Article> articles;
 
-  ArticleFetchedState({this.articles}) : assert(articles != null);
+  ArticleFetchedState({this.articles});
 }
 
 // エラー
