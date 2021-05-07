@@ -10,7 +10,7 @@ class ArticleTagSelectedEvent extends ArticleEvent {
 }
 
 class SearchTextEvent extends ArticleEvent {
- final String searchWord;
+  final String searchWord;
 
- SearchTextEvent({this.searchWord});
+  SearchTextEvent({this.searchWord});
 }

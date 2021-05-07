@@ -11,13 +11,11 @@ class ArticleBloc extends Bloc<ArticleEvent, ArticleState> {
 
   @override
   Stream<ArticleState> mapEventToState(ArticleEvent event) async* {
-    print(event);
     if (event is SearchTextEvent) {
       yield ArticleFetchingState();
       try {
-        final List<Article> articles = await articleRepository
-            .fetchArticlesByTitle(event.searchWord);
-            print(event.searchWord);
+        final List<Article> articles =
+            await articleRepository.fetchArticlesByTitle(event.searchWord);
         if (articles.length == 0) {
           yield ArticleEmptyState();
         } else {

@@ -16,7 +16,7 @@ class ArticleSearchWordBar extends StatelessWidget {
       child: TextField(
           onSubmitted: (searchWord) {
             BlocProvider.of<ArticleBloc>(context)
-              .add(SearchTextEvent(searchWord: searchWord));
+                .add(SearchTextEvent(searchWord: searchWord));
           },
           decoration: InputDecoration(
             border: InputBorder.none,

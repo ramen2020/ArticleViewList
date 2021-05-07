@@ -30,6 +30,3 @@ class ArticleDetailPage extends StatelessWidget {
     );
   }
 }
-
-mixin JavascriptMode {
-}
