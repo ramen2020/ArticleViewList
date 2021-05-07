@@ -19,7 +19,6 @@ class ArticleBloc extends Bloc<ArticleEvent, ArticleState> {
       try {
         final List<Article> articles = await articleRepository
             .fetchArticlesByTag(event.articleTagModel.tagName);
-        print(articles);
         if (articles.length == 0) {
           yield ArticleEmptyState();
         } else {

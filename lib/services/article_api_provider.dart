@@ -6,7 +6,7 @@ class ArticleApiProvider {
   String url = 'https://qiita.com/api/v2/items';
 
   Future<List<Article>> fetchArticlesByTag(String tag) async {
-    final response = await http.get(url + '?query=title%3A' + tag);
+    final response = await http.get(url + '?query=tag%3A' + tag);
     final List<dynamic> jsonArray = jsonDecode(response.body);
 
     if (response.statusCode == 200) {
